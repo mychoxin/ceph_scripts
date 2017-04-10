@@ -1,0 +1,57 @@
+[global]
+	fsid = _FSID_
+	public network = _PUBLIC_NETWORK_
+	cluster network = _CLUSTER_NETWORK_
+	auth cluster required = none
+	auth service required = none
+	auth client required = none
+	osd pool default size = 2
+	osd pool default min size = 1
+    mon osd min down reporters = 1
+	osd pool default pg num = 128
+	osd pool default pgp num = 128
+	
+	#single node
+	osd crush chooseleaf type = 0
+	
+	rbd op threads = 3
+	rbd cache = false
+	rbd cache max dirty = 0
+	rbd readahead max bytes = 0
+	
+	debug_crush = 0
+	debug_mds = 0
+	debug_mds_balancer = 0
+	debug_mds_locker = 0
+	debug_mds_log = 0
+	debug_mds_log_expire = 0
+	debug_mds_migrator = 0
+	debug_filestore = 0
+	debug_keyvaluestore = 0
+	debug_journal = 0
+	debug_mon = 0
+	debug_paxos = 0
+	debug_auth = 0
+	debug_crypto = 0
+	debug_finisher = 0
+	debug_heartbeatmap = 0
+	debug_perfcounter = 0
+	debug_rgw = 0
+	debug_javaclient = 0
+	debug_asok = 0
+	debug_throttle = 0
+	debug_xio = 0
+	
+	ms type = async
+
+[mon]
+	#mon initial members = _MON_INITIAL_MEMBERS_
+[osd]
+	journal dio = true
+	journal aio = true
+	filestore xattr use omap = true
+	journal_discard = true
+	filestore fd cache size = 60000
+
+[client]
+	admin socket = /var/run/ceph/$cluster-$type.$id.$pid.$cctid.asok
