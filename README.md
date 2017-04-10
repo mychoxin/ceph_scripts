@@ -1,1 +1,1 @@
-# ceph_scripts
+# ceph create cluster scripts
