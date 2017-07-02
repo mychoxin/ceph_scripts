@@ -41,13 +41,13 @@ osds=\$(echo \"\$python\" | python)
 for osd in \$osds
 do
 	echo stopping osd.\$osd
-	kill \$(ps aux | grep -w \"[c]eph-osd -i \$osd\" | awk '{print \$2}') &> /dev/null
+	sudo kill \$(ps aux | grep -w \"[c]eph-osd -i \$osd\" | awk '{print \$2}') &> /dev/null
 	while [ x\"\`ps aux | grep -w \\\"[c]eph-osd -i \$osd\\\"\`\" != x ]
 	do
 		#echo stopping osd.\$osd
 		sleep 1
 	done
-	ceph-osd -i \$osd
+	sudo ceph-osd -i \$osd
 done
 "
 
